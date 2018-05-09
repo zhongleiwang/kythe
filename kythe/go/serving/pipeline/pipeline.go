@@ -416,8 +416,10 @@ func writeDecorAndRefs(ctx context.Context, opts *Options, edges <-chan *srvpb.E
 
 		if decor != nil && curFile != fileTicket {
 			if decor.File != nil {
+                                fmt.Errorf("??? Error: decor.file:%v cur:%v ticket:%v", decor.File, curFile, fileTicket)
 				if err := writeDecor(ctx, buffer, decor, targets); err != nil {
-					return err
+                                        fmt.Errorf("??? Error: writeDecor %v", err)
+					// return err
 				}
 				file = nil
 			}
@@ -463,7 +465,9 @@ func writeDecorAndRefs(ctx context.Context, opts *Options, edges <-chan *srvpb.E
 
 		return nil
 	}); err != nil {
-		return fmt.Errorf("error reading decoration fragments: %v", err)
+                fmt.Errorf("error reading decoration fragments: %v", err)
+                return nil
+		// return fmt.Errorf("error reading decoration fragments: %v", err)
 	}
 
 	if decor != nil && decor.File != nil {

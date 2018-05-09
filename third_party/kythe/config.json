@@ -1,0 +1,16 @@
+[
+  {
+    "pattern": "bazel-out/[^/]+/bin/(.*?/java)/.*\\.jar!/([^\\$]+)(\\$.+)?\\.class",
+    "vname": {
+      "corpus": "kythe",
+      "path": "@1@/@2@.java"
+    }
+  },
+  {
+    "pattern": "(.*)",
+    "vname": {
+      "corpus": "kythe",
+      "path": "@1@"
+    }
+  }
+]
